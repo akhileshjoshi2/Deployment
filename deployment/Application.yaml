@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hsp-loginfra-definition
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+#  finalizers:
+#    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  project: hsp-loginfra
+  source:
+    repoURL: https://akhileshjoshi2.github.io/hsp-loginfra
+    chart: hsp-loginfra-definition
+    targetRevision: 0.1.0
+    helm:
+      releaseName: hsp-loginfra-definition
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hsp-loginfra-claim
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  project: hsp-loginfra
+  source:
+    repoURL: https://akhileshjoshi2.github.io/hsp-loginfra
+    chart: hsp-loginfra-claim
+    targetRevision: 0.1.0
+    helm:
+      releaseName: hsp-loginfra-claim
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
