@@ -12,4 +12,14 @@ echo 'first commit on test5'
 echo 'first commit to master'
 
 
+echo 'second commit to master'
+
+echo 'commit to master'
+
+
+echo 'CI-CD changes'
+
+echo 'changed made to argocd'
+
+echo 'revertd changes'
 
