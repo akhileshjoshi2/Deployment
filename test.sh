@@ -14,8 +14,6 @@ echo 'first commit to master'
 
 echo 'second commit to master'
 
-echo 'commit to master'
-
 
 
 
